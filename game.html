@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>Minesweeper</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="game.css" />
+</head>
+<body>
+	<main>
+		<div id="message_flex">
+			<div class="win">
+				YOU WIN!!
+			</div>
+			<div class="lose">
+				YOU LOSE
+			</div>
+			<button>New Game</button>
+		</div>
+
+		<div id="game_flex">
+			<div class="header">
+				<select name="difficulty" title="Choose Level">
+					<option value="easy" selected>Easy</option>
+					<option value="medium">Medium</option>
+					<option value="hard">Hard</option>
+				</select>
+				<div id="flag_counter" title="Flags Left">
+					<img src="flag.png" />
+					<span>--</span>
+				</div>
+				<button title="Let computer play">Auto Solve</button>
+			</div>
+			<aside id="info_card">
+				<label>i</label>
+				<h1>How to Play</h1>
+				<ul>
+					<li>Find all the hidden bombs.
+						<ul>
+							<li><img src="shovel.png" alt="shove" title="shove" ><b>Shove:</b> Double Click</li>
+							<li><img src="flag.png" alt="flag" title="flag" ><b>Flag:</b> Right Click</li>
+						</ul>
+					</li>
+					<li>Number on a tile means among 8 surrounding tiles that number of tiles have bomb.</li>
+					<li>Flagged tiles cannot be shoved.</li>
+				</ul>
+			</aside>
+			<div id="field_area"></div>
+		</div>
+	</main>
+	<script src="game.js"></script>
+</body>
+</html>

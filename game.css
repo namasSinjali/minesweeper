@@ -1,0 +1,275 @@
+main{
+}
+#game_flex{
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	background-color: #568a35;
+	height: 95vh;
+}
+#game_flex .header{
+	background-color: #4a752d;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 30px;
+}
+#game_flex .header select, #game_flex .header button{
+	font-size: 20px;
+	font-weight: bold;
+	padding: .3em;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	flex: 0 1 6em;
+}
+#flag_counter{
+	height: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex: 0 1 2em;
+}
+#game_flex .header img{
+	height: 100%;
+}
+#game_flex .header span{
+	color: white;
+	font-family: sans-serif;
+}
+
+
+
+#field_area {
+	display: grid;
+	grid-template-rows: repeat(12, 55px);
+	grid-template-columns: repeat(6, 55px);
+	margin: auto;
+}
+#field_area>div{
+	position: relative;
+}
+#field_area>div::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+#field_area>div.light::before{
+	background-color: #a2d049;
+}
+#field_area>div.light{
+	background-color: #d7b899;
+}
+#field_area>div.dark::before{
+	background-color: #a9d751;
+}
+#field_area>div.dark{
+	background-color: #e4c29f;
+}
+#field_area>div.flagged::before {
+	background-image: url(flag.png);
+	background-size: contain;
+}
+#field_area>div.bomb {
+	background-image: url(bomb.png);
+	background-size: contain;
+}
+#field_area>div.shoved::before{
+	display: none;
+}
+
+#field_area>div::after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	font-size: inherit;
+	font-family: sans-serif;
+	text-align: center;
+}
+#field_area>div.bomb::after{
+	display: none;
+}
+#field_area>div.near1::after{
+	content: "1";
+	color: #1976d3;
+}
+#field_area>div.near2::after{
+	content: "2";
+	color: #398d3d;
+}
+#field_area>div.near3::after{
+	content: "3";
+	color: #d32e2e;
+}
+#field_area>div.near4::after{
+	content: "4";
+	color: #9627db;
+}
+#field_area>div.near5::after{
+	content: "5";
+	color: #fe8e01;
+}
+#field_area>div.near6::after{
+	content: "6";
+	color: ;
+}
+
+
+#field_area div.button-container{
+	position: absolute;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+}
+#field_area div.button-container button {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 0 5px;
+	padding: 0;
+	cursor: pointer;
+	background-color: #4a752d;
+}
+#field_area div.button-container button:hover {
+	background-color: #568a35;
+}
+#field_area div.button-container button.shove-btn{
+	background-image: url(shovel.png);
+	background-size: cover;
+}
+#field_area div.button-container button.flag-btn{
+	background-image: url(flag.png);
+	background-size: cover;
+}
+#field_area div.button-container button.close-btn{
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+#field_area div.button-container button.close-btn::before{
+	display: block;
+	content: "";
+	background: white;
+	width: 30px;
+	height: 2px;
+	margin: auto;
+	position: absolute;
+	top: 19px;
+	left: 5px;
+	transform: rotate(45deg);
+}
+#field_area div.button-container button.close-btn::after{
+	display: block;
+	content: "";
+	background: white;
+	width: 30px;
+	height: 2px;
+	margin: auto;
+	position: absolute;
+	top: 19px;
+	left: 5px;
+	transform: rotate(-45deg);
+}
+
+#message_flex {
+	display: none;
+	background-color: #000000aa;
+	flex-flow: column nowrap;
+	align-items: center;
+	height: 95vh;
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+	justify-content: center;
+	font-size: 2rem;
+	font-family: monospace;
+}
+#message_flex div {
+	padding: 1em;
+	color: #265207;
+	background: #cacdcaba;
+	display: none;
+	border-radius: .2em;
+	margin: 1em;
+	font-size: 2em;
+}
+#message_flex.win, #message_flex.lose {
+	display: flex;
+}
+#message_flex.win .win{
+	display: block;
+}
+#message_flex.lose .lose {
+	display: block;
+}
+#message_flex button {
+	font: inherit;
+	padding: 1em 3em;
+	border-radius: 2em;
+	color: white;
+	background-color: #4a752dbb;
+	border: none;
+	outline: none;
+}
+#message_flex button:hover{
+	background-color: #4a752d;
+}
+#field_area.win>div::before{
+	opacity: 0.6;
+	transition: 2s opacity ease;
+}
+
+aside{
+	position: absolute;
+	top: 60px;
+	z-index: 5;
+	font-family: sans-serif;
+	font-size: 1.3rem;
+	color: white;
+	background-color: #1bc4b8;
+	max-width: 600px;
+	align-self: flex-start;
+	padding: 0 1em;
+	border-radius: 10px;
+	clip-path: circle(20px at 25px 20px);
+	transition: all .5s linear;
+}
+aside h1{
+	text-decoration: underline;
+}
+aside>ul li{
+	padding: 1em;
+}
+aside ul ul li{
+	list-style-type: none;
+	padding: 0;
+}
+aside img{
+	width: 2em;
+}
+aside ul b{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+aside label{
+	font-size: 35px;
+}
+aside:hover {
+	clip-path: circle(150% at 25px 20px);
+	background-color: #0e4229bd;
+}
+aside:hover label{
+	opacity: 0;
+}
